@@ -47,14 +47,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function setFirstNameAttribute($value)
-    {
-        $this->attributes['first_name'] = $value;
-    }
-
-    public function setLastNameAttribute($value)
-    {
-        $this->attributes['last_name'] = $value;
-    }
 }
