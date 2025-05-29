@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -47,4 +48,18 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $exception);
     }
+
+    // protected function unauthenticated($request, AuthenticationException $exception)
+    // {
+    //     // Return custom JSON response for API requests
+    //     if ($request->expectsJson() || $request->is('/*')) {
+    //         return response()->json([
+    //             'status' => 'error',
+    //             'message' => 'You must be logged in to access this resource.'
+    //         ], 401);
+    //     }
+
+    //     // Default behavior for non-API requests (e.g., web)
+    //     return redirect()->guest(route('login'));
+    // }
 }
