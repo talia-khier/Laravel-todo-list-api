@@ -50,17 +50,17 @@ return [
         ],
     ],
     'defaults' => [
-        "api" => [
-            "title" => "To-Do List API",
-            "description" => "API documentation for the To-Do List application built with Laravel.",
-            "version" => "1.0.0",
-            "termsOfService" => "http://swagger.io/terms/",
-            "contact" => [
-            "email" => "support@todolistapp.com",
+        'api' => [
+            'title' => 'To-Do List API',
+            'description' => 'API documentation for the To-Do List application built with Laravel.',
+            'version' => '1.0.0',
+            'termsOfService' => 'http://swagger.io/terms/',
+            'contact' => [
+                'email' => 'support@todolistapp.com',
             ],
-                "license" => [
-                "name" => "Apache 2.0",
-                "url" => "https://www.apache.org/licenses/LICENSE-2.0.html",
+            'license' => [
+                'name' => 'Apache 2.0',
+                'url' => 'https://www.apache.org/licenses/LICENSE-2.0.html',
             ],
         ],
 

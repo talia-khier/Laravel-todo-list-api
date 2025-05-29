@@ -12,5 +12,16 @@ namespace App\Swagger;
  *         email="your-email@example.com"
  *     )
  * )
+ *
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT"
+ * )
+ *
+ * @OA\SecurityRequirement(
+ *     securityScheme="bearerAuth"
+ * )
  */
 class SwaggerController {}
