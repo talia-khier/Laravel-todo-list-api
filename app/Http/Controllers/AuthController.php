@@ -13,7 +13,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/api/auth/register",
-     *     tags={"Users"},
+     *     tags={"Auth"},
      *     summary="Register user",
      *     description="Register a new user",
      *
@@ -59,7 +59,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/api/auth/login",
-     *     tags={"Users"},
+     *     tags={"Auth"},
      *     summary="Login user",
      *     description="Login user",
      *
@@ -98,5 +98,34 @@ class AuthController extends Controller
             'user' => $user,
             'token' => $token,
         ], 'User logged in successfully');
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/auth/logout",
+     *     tags={"Auth"},
+     *     summary="Logout user",
+     *     description="Logout user",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="User logout successfully"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthenticated"
+     *     )
+     * )
+     */
+    public function logout()
+    {
+        $user = Auth::user();
+
+        if ($user?->currentAccessToken()) {
+            // Delete all API tokens
+            $user->tokens()->delete();
+        }
+
+        return Response::success(null, 'User logout successfully');
     }
 }
