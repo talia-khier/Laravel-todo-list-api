@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                 'message' => $message,
             ];
 
-            if (!is_null($data)) {
+            if (! is_null($data)) {
                 $response['data'] = $data;
             }
 
