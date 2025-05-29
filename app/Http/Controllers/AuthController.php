@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\LoginUserRequest;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 class AuthController extends Controller
@@ -84,15 +84,14 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        $user = User::where('email', $credentials['email'])->first();
-
-        if (! $user || ! Hash::check($credentials['password'], $user->password)) {
+        if (! Auth::attempt($credentials)) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'The provided credentials are incorrect.',
             ], 401);
         }
 
+        $user = Auth::user();
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return Response::success([
