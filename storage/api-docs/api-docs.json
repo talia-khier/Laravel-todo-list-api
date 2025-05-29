@@ -130,6 +130,29 @@
                     }
                 ]
             }
+        },
+        "/api/user/profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "user Profile info",
+                "description": "user Profile info",
+                "operationId": "e8d90f12218d0e5c71acf5da54a1be9a",
+                "responses": {
+                    "200": {
+                        "description": "User Profile Info"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -145,6 +168,10 @@
         {
             "name": "Auth",
             "description": "Auth"
+        },
+        {
+            "name": "User",
+            "description": "User"
         }
     ]
 }

@@ -107,6 +107,7 @@ class AuthController extends Controller
      *     summary="Logout user",
      *     description="Logout user",
      *     security={{"bearerAuth":{}}},
+     *
      *     @OA\Response(
      *         response=200,
      *         description="User logout successfully"

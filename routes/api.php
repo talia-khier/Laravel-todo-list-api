@@ -10,6 +10,10 @@ Route::prefix('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
+Route::prefix('user')->middleware('auth:sanctum')->group(function () {
+    Route::get('/profile', [UserController::class, 'show']);
+});
+
 Route::fallback(function () {
     return response()->json([
         'status' => 'error',
