@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     /**
      * @OA\Post(
-     *     path="/api/user/register",
+     *     path="/api/auth/register",
      *     tags={"Users"},
      *     summary="Register user",
      *     description="Register a new user",
@@ -58,7 +58,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/user/login",
+     *     path="/api/auth/login",
      *     tags={"Users"},
      *     summary="Login user",
      *     description="Login user",
@@ -90,8 +90,8 @@ class AuthController extends Controller
                 'message' => 'The provided credentials are incorrect.',
             ], 401);
         }
-
         $user = Auth::user();
+        $user->tokens()->delete();
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return Response::success([
